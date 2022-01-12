@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca484f8df1c4df4795fef69b57a229e, type: 3}
   m_Name: Zombie_2
   m_EditorClassIdentifier: 
-  m_maxHealth: 1
-  m_health: 1
+  m_maxHealth: 2
   m_damage: 1
   m_sprite: {fileID: -6097248179279068756, guid: 6844addcd68cdb14d8d3cfa2d6ec99c9, type: 3}
-  m_speed: 5
+  m_speed: 3
   m_color: {r: 1, g: 0.4862745, b: 0.76862746, a: 1}

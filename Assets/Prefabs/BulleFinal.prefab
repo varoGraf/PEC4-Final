@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8460644703326764323}
   m_Layer: 9
   m_Name: BulleFinal
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e932510d0864d3478515fa53bd77a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 5518273744138556166, guid: 83606cf0312c6d84cb37270be6aaeae0, type: 3}
 --- !u!1 &8460644704731663699
 GameObject:
   m_ObjectHideFlags: 0

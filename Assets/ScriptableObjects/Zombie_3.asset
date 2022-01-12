@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Zombie_3
   m_EditorClassIdentifier: 
   m_maxHealth: 2
-  m_health: 2
   m_damage: 2
   m_sprite: {fileID: -4818594564832708967, guid: 6844addcd68cdb14d8d3cfa2d6ec99c9, type: 3}
   m_speed: 5
