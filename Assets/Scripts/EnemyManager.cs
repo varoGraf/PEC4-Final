@@ -81,11 +81,11 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isFading = true;
         int probabilityPool = Random.Range(0, 10);
-        if (probabilityPool < 3)
+        if (probabilityPool < 5)
         {
             Instantiate(BoxOfAmmo, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
-        else if (probabilityPool < 5)
+        else if (probabilityPool < 7)
         {
             Instantiate(HeartContainer, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
