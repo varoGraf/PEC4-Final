@@ -13,8 +13,9 @@ public class EnemyManager : MonoBehaviour
     private Animator m_anim;
 
     public EnemySO m_enemySO;
-    public AudioClip audioClip1, audioClip2, audioClip3;
-    public AudioSource m_audioSource;
+    public AudioClip audioClip1, audioClip2, audioClip3, damage1, damage2;
+    public AudioSource m_audioSource, m_damageAudioSource;
+    public GameObject BoxOfAmmo, HeartContainer;
 
     void Start()
     {
@@ -35,6 +36,8 @@ public class EnemyManager : MonoBehaviour
         {
             isDead = true;
             Destroy(this.GetComponent<Rigidbody2D>());
+            Destroy(this.GetComponent<BoxCollider2D>());
+            Destroy(this.transform.GetChild(0).GetComponent<BoxCollider2D>());
             m_particleSystem.Stop();
             if (Random.Range(0, 2) == 0) { m_anim.SetBool("Right", true); }
             else { m_anim.SetBool("Right", false); }
@@ -77,6 +80,16 @@ public class EnemyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         isFading = true;
+        int probabilityPool = Random.Range(0, 10);
+        if (probabilityPool < 3)
+        {
+            Instantiate(BoxOfAmmo, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        }
+        else if (probabilityPool < 5)
+        {
+            Instantiate(HeartContainer, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
+        }
+
         yield return new WaitForSeconds(1f);
         this.transform.parent = null;
         for (int i = 0; i < this.transform.childCount; i++)
@@ -102,6 +115,8 @@ public class EnemyManager : MonoBehaviour
     {
         if (other.transform.tag == "Bullet")
         {
+            if (Random.Range(0, 2) == 0) { m_damageAudioSource.PlayOneShot(damage1); }
+            else { m_damageAudioSource.PlayOneShot(damage2); }
             m_health -= 1;
         }
     }

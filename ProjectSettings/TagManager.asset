@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Obstacle
   - Bullet
+  - HeartContainer
+  - BoxOfAmmo
   layers:
   - Default
   - TransparentFX
