@@ -11,7 +11,7 @@ public class ChestScript : MonoBehaviour
 
     void Start()
     {
-        positionToSpawn = new Vector3(this.transform.position.x + this.GetComponent<BoxCollider2D>().bounds.size.x / 2, this.transform.position.y, this.transform.position.z);
+        positionToSpawn = new Vector3(this.transform.position.x + this.GetComponent<BoxCollider2D>().bounds.size.x, this.transform.position.y, this.transform.position.z);
     }
     void Update()
     {
@@ -20,8 +20,10 @@ public class ChestScript : MonoBehaviour
 
     IEnumerator SpawnAmmo()
     {
+        isReady = false;
         yield return new WaitForSeconds(1f);
         Instantiate(ammo, positionToSpawn, Quaternion.Euler(0f, 0f, 0f));
         yield return new WaitForSeconds(12f);
+        isReady = true;
     }
 }
