@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerSO m_player;
     public GameObject[] spawnPoints;
     public GameObject zombie1, zombie2, zombie3;
+    public GameObject pauseMenu;
 
     private bool perNumEnemies = false;
     private bool perTime = false;
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     private bool spawnActive = false;
     void Start()
     {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
         Vector2 cursorHotspot = new Vector2(cursor.width / 2, cursor.height / 2);
         Cursor.SetCursor(cursor, cursorHotspot, CursorMode.ForceSoftware);
         Camera.main.transform.position = new Vector3(Player.position.x, Player.position.y, Camera.main.transform.position.z);
@@ -41,10 +45,10 @@ public class GameManager : MonoBehaviour
         Camera.main.transform.position = new Vector3(Player.position.x, Player.position.y, Camera.main.transform.position.z);
 
 
-        if (m_player.m_health == 0)
+        if (m_player.m_health <= 0)
         {
-            //TODO: Final state losing
-            Debug.Log("You Loose!");
+            pauseMenu.SetActive(true);
+            pauseMenu.transform.GetChild(0).GetComponent<Text>().text = "You lose!";
             Time.timeScale = 0;
         }
 
@@ -53,8 +57,8 @@ public class GameManager : MonoBehaviour
         {
             if (m_settings.numEnemiesKilled >= m_settings.enemiesToKill[m_settings.getDifficulty()])
             {
-                //TODO: Final state winning
-                Debug.Log("You Win!");
+                pauseMenu.SetActive(true);
+                pauseMenu.transform.GetChild(0).GetComponent<Text>().text = "You win!";
                 Time.timeScale = 0;
             }
         }
@@ -69,15 +73,15 @@ public class GameManager : MonoBehaviour
             }
             if (m_settings.current_time <= 0 && m_player.m_health > 0)
             {
-                //TODO: Final state winning
-                Debug.Log("You Win!");
+                pauseMenu.transform.GetChild(0).GetComponent<Text>().text = "You win!";
+                pauseMenu.SetActive(true);
                 Time.timeScale = 0;
             }
 
         }
 
 
-        //TODO: Code for spawning enemies HERE
+        //Code for spawning enemies
         if (!spawnActive && Time.timeScale != 0)
         {
             StartCoroutine(spawnEnemiesGlobal(10f, 2));
