@@ -104,8 +104,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < numberOfEnemies; i++)
         {
             int auxRand = Random.Range(0, 20);
-            if (auxRand < 12) { Instantiate(zombie1, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
-            else if (auxRand < 17) { Instantiate(zombie2, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
+            if (auxRand < 13) { Instantiate(zombie1, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
+            else if (auxRand < 18) { Instantiate(zombie2, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
             else { Instantiate(zombie3, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
             yield return new WaitForSeconds(0.3f);
         }
