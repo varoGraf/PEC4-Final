@@ -255,7 +255,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (Random.Range(0, 2) == 0) { damageAudioSource.PlayOneShot(damage1); }
             else { damageAudioSource.PlayOneShot(damage2); }
-            m_playerSO.setHealth(m_playerSO.getHealth() - 1);
+            m_playerSO.setHealth(m_playerSO.getHealth() - other.gameObject.GetComponentInParent<EnemyManager>().m_enemySO.m_damage);
             StartCoroutine(hit());
         }
         if (other.gameObject.tag == "BoxOfAmmo" && m_playerSO.getAmmo() < m_playerSO.m_maxAmmo)

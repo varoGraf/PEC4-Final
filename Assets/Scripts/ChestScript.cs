@@ -23,7 +23,11 @@ public class ChestScript : MonoBehaviour
         isReady = false;
         yield return new WaitForSeconds(1f);
         Instantiate(ammo, positionToSpawn, Quaternion.Euler(0f, 0f, 0f));
-        yield return new WaitForSeconds(12f);
+        int aux = Random.Range(0, 4);
+        if (aux == 0) { yield return new WaitForSeconds(9f); }
+        else if (aux == 1) { yield return new WaitForSeconds(10f); }
+        else if (aux == 2) { yield return new WaitForSeconds(11f); }
+        else { yield return new WaitForSeconds(12f); }
         isReady = true;
     }
 }

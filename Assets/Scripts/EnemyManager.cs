@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
     private Animator m_anim;
 
     public EnemySO m_enemySO;
+    public SettingsSO m_settings;
     public AudioClip audioClip1, audioClip2, audioClip3, damage1, damage2;
     public AudioSource m_audioSource, m_damageAudioSource;
     public GameObject BoxOfAmmo, HeartContainer;
@@ -35,6 +36,7 @@ public class EnemyManager : MonoBehaviour
         if (m_health <= 0 && !isDead)
         {
             isDead = true;
+            m_settings.numEnemiesKilled += 1;
             Destroy(this.GetComponent<Rigidbody2D>());
             Destroy(this.GetComponent<BoxCollider2D>());
             Destroy(this.transform.GetChild(0).GetComponent<BoxCollider2D>());
@@ -76,6 +78,7 @@ public class EnemyManager : MonoBehaviour
         isSoundPlaying = false;
     }
 
+    //Coroutine when enemy dies
     IEnumerator death()
     {
         yield return new WaitForSeconds(1f);
