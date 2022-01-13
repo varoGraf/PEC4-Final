@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if (!isSoundPlaying && !isDead) { StartCoroutine(playSound()); }
+        if (!isSoundPlaying && !isDead && Vector3.Distance(this.transform.position, m_target.position) <= 10f) { StartCoroutine(playSound()); }
         if (m_health <= 0 && !isDead)
         {
             isDead = true;
@@ -84,11 +84,11 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isFading = true;
         int probabilityPool = Random.Range(0, 10);
-        if (probabilityPool < 5)
+        if (probabilityPool < 3)
         {
             Instantiate(BoxOfAmmo, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
-        else if (probabilityPool < 7)
+        else if (probabilityPool < 5)
         {
             Instantiate(HeartContainer, this.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public SettingsSO m_settings;
     public PlayerSO m_player;
     public GameObject[] spawnPoints;
+    public GameObject zombie1, zombie2, zombie3;
 
     private bool perNumEnemies = false;
     private bool perTime = false;
@@ -77,14 +78,32 @@ public class GameManager : MonoBehaviour
 
 
         //TODO: Code for spawning enemies HERE
-        if (!spawnActive)
+        if (!spawnActive && Time.timeScale != 0)
         {
-            StartCoroutine(spawnEnemies(10f));
+            StartCoroutine(spawnEnemiesGlobal(10f, 2));
         }
     }
 
-    IEnumerator spawnEnemies(float timeBetween)
+    IEnumerator spawnEnemiesGlobal(float timeBetween, int enemiesPerSpawn)
     {
-        yield return null;
+        spawnActive = true;
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            StartCoroutine(spawnEnemiesLocal(spawnPoints[i], enemiesPerSpawn));
+        }
+        yield return new WaitForSeconds(timeBetween);
+        spawnActive = false;
+    }
+
+    IEnumerator spawnEnemiesLocal(GameObject spawnPoint, int numberOfEnemies)
+    {
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            int auxRand = Random.Range(0, 20);
+            if (auxRand < 12) { Instantiate(zombie1, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
+            else if (auxRand < 17) { Instantiate(zombie2, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
+            else { Instantiate(zombie3, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)); }
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 }
