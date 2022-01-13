@@ -24590,7 +24590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80118c76d8c494145bf8846a4ad943f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 2800000, guid: 32b49b95034e6854f94212c746568dee, type: 3}
   Player: {fileID: 1900448149}
   m_settings: {fileID: 11400000, guid: 350550d0d2cc83143a6100756e32dbf6, type: 2}
   m_player: {fileID: 11400000, guid: 46fe7454c7e28724ca24cfd1d5fcc20f, type: 2}
@@ -24989,6 +24988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7713aeb5d36a34a4e964689b800b255f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 2800000, guid: 32b49b95034e6854f94212c746568dee, type: 3}
 --- !u!1 &1881239054
 GameObject:
   m_ObjectHideFlags: 0

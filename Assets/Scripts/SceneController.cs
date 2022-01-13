@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public Texture2D cursor;
+    void Start()
+    {
+        Vector2 cursorHotspot = new Vector2(cursor.width / 2, cursor.height / 2);
+        Cursor.SetCursor(cursor, cursorHotspot, CursorMode.ForceSoftware);
+    }
     public void LoadMenuScene()
     {
         SceneManager.LoadScene("MenuScene");
