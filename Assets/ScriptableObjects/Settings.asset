@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3d569a6875eb44f91fcd007a2da7f6, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  times: 1e0000003c00000078000000
-  enemiesToKill: 1e0000003c0000005a000000
-  current_time: 0
-  numEnemiesKilled: 0
+  times: 0f0000001e0000003c000000
+  enemiesToKill: 0f0000001e0000003c000000
+  current_time: 7
+  numEnemiesKilled: 28
